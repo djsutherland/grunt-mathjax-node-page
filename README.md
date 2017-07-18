@@ -77,5 +77,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
- * 2017-05-20   v0.1.1   Fix README.
+ * 2017-07-19   v0.1.1   Fix README.
  * 2017-07-19   v0.1.0   Initial release.
