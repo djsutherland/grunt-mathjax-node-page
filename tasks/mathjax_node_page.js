@@ -23,7 +23,7 @@ module.exports = function(grunt) {
     });
 
     this.files.forEach(function(f) {
-      if (f.src.length != 1) {
+      if (f.src.length !== 1) {
         grunt.log.warn("One source file per dest, please; got " + f.src);
         return false;
       }
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       var src = grunt.file.read(f.src);
       mjpage(src, options.page, options.mjnode, function(result) {
         grunt.file.write(f.dest, result);
-      })
+      });
     });
   });
 };
