@@ -35,6 +35,7 @@ module.exports = function(grunt) {
       var src = grunt.file.read(f.src);
       mjpage(src, options.page, options.mjnode, function(result) {
         grunt.file.write(f.dest, result);
+        done();
       });
     });
   });

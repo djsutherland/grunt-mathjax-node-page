@@ -1,7 +1,7 @@
 {
   "name": "grunt-mathjax-node-page",
   "description": "Grunt plugin to prerender MathJax in your HTML pages, with mathjax-node-page.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/dougalsutherland/grunt-mathjax-node-page",
   "author": {
     "name": "Dougal J. Sutherland",
@@ -15,12 +15,7 @@
   "bugs": {
     "url": "https://github.com/dougalsutherland/grunt-mathjax-node-page/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/dougalsutherland/grunt-mathjax-node-page/blob/master/LICENSE-MIT"
-    }
-  ],
+  "license": "MIT",
   "engines": {
     "node": ">= 0.8.0"
   },
