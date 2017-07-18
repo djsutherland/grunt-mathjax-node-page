@@ -8,43 +8,34 @@
 
 'use strict';
 
+var chalk = require('chalk');
+
 module.exports = function(grunt) {
+  var mjpage = require("mathjax-node-page").mjpage;
 
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  grunt.registerMultiTask('mathjax_node_page', 'Prerender MathJax in HTML pages.', function() {
+    var done = this.async();
 
-  grunt.registerMultiTask('mathjax_node_page', 'Grunt plugin to prerender MathJax in your HTML pages, with mathjax-node-page.', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
+      page: {singleDollars: true},
+      mjnode: {svg: true}
     });
 
-    // Iterate over all specified file groups.
     this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
+      if (f.src.length != 1) {
+        grunt.log.warn("One source file per dest, please; got " + f.src);
+        return false;
+      }
+      if (!grunt.file.exists(f.src[0])) {
+        grunt.log.warn("Can't find source file '" + f.src[0] + "'.");
+        return false;
+      }
 
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
+      var src = grunt.file.read(f.src);
+      mjpage(src, options.page, options.mjnode, function(result) {
+        grunt.file.write(f.dest, result);
+      })
     });
   });
-
 };
