@@ -55,15 +55,22 @@ at 80ex.
 
 ### Usage Examples
 
+Here is a simple example that renders `index.html` into `index-rendered.html`, allowing single dollar signs as inline math delimiters:
+
 ```js
 grunt.initConfig({
   mathjax_node_page: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+    options: {
+      page: {
+        singleDollars: true
+      }
     },
-  },
+    files: {
+      'index-rendered.html': ['index.html']
+    }
+  }
 });
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
