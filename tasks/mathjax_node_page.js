@@ -8,8 +8,6 @@
 
 'use strict';
 
-var chalk = require('chalk');
-
 module.exports = function(grunt) {
   var mjpage = require("mathjax-node-page").mjpage;
 
